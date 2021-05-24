@@ -3,13 +3,14 @@ function displaymymodel(mymodel,displaytype)
     if displaytype == "simple"
         figure()
         gplot(mymodel.connectivity,mymodel.position)
-        axis equal
+
 
     elseif displaytype == "strain"                                          % pulled from old code, not sure what its' doing tbh
         figure()
         
         [n ,dim]= size(mymodel.position);
         positionmatrix = repmat(mymodel.position,1,1,n);
+        connectivitymatrix = permute(repmat(mymodel.connectivity,1,1,dim), [1 3 2]);
         vectordistance = positionmatrix- permute(positionmatrix,[3 2 1]);
         %note that the force on 1 is sum of vectordistance(:,:1)
         scalerdistance = sqrt(vectordistance(:,1,:).^2 +vectordistance(:,2,:).^2);
@@ -37,7 +38,6 @@ function displaymymodel(mymodel,displaytype)
         figure()
         patch([X ;nan],[Y ;nan],[zeros(size(Z,1)+1,1)],[Z ;nan],'EdgeColor','interp','FaceColor','none')
         colorbar()
-        axis equal
         
         
         

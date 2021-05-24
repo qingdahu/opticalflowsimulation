@@ -1,4 +1,4 @@
-function mymodel = initializemymodel(position,connectivity,anchortype)
+function mymodel = initializemymodel(position,connectivity, springs, anchortype)
 
     if anchortype == "firstlast" 
         anchorpoints = [1,length(position)];
@@ -9,10 +9,10 @@ function mymodel = initializemymodel(position,connectivity,anchortype)
     else 
     end
     
-    [n ,dim]= size(position);
-    positionmatrix = repmat(position,1,1,n);
-    vectordistance = positionmatrix- permute(positionmatrix,[3 2 1]);
-    springs = sqrt(vectordistance(:,1,:).^2 +vectordistance(:,2,:).^2);
+%     [n ,~]= size(position);
+%     positionmatrix = repmat(position,1,1,n);
+%     vectordistance = positionmatrix- permute(positionmatrix,[3 2 1]);
+%     springs = sqrt(vectordistance(:,1,:).^2 +vectordistance(:,2,:).^2);
 
 
     mymodel = struct;
